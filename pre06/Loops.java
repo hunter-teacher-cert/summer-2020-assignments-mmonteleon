@@ -3,6 +3,8 @@ public class Loops
   public static void main(String[] args)
   {
     /*Write a program named Loops.java which has solutions to excercises 3, 4, and 5 from chapter 7 of Think Java.*/
+    System.out.println("****** Loops.java ******");
+
     System.out.println("Exercise 3:  Iterative power method");
     System.out.println("2^3: " + power(2,3));
     System.out.println("10^4: " + power(10,4));
@@ -14,17 +16,23 @@ public class Loops
     System.out.println("");
 
     System.out.println("Exercise 5:  Iterative e^x");
-    System.out.println("e^1: " + myExp(1, 8) + ", Math.exp(1): " + Math.exp(1));
-    System.out.println("e^3: " + myExp(3, 10) + ", Math.exp(3): " + Math.exp(3));
-    System.out.println("e^5: " + myExp(5, 8) + ", Math.exp(5): " + Math.exp(5));
-    System.out.println("");
-
-    System.out.println("*Note: myExp was written by me.  myExp2 was from Stack Overflow*");
-    System.out.println("Terms\tmyExp\t\tmyExp2\t\tMath.exp");
-    for(int i = 1; i <= 20; i++)
+    int hightestMatch = 0;
+    int bestIndex = 0;
+    for(int i = 1; i <= 100; i++)
     {
-      System.out.printf(i+ "\t%.5f\t\t%.5f\t\t%.5f\n", myExp(1, i), myExp2(1, i), Math.exp(1));
+      double myCalc = myExp(2,i);
+      double e2 = Math.exp(2);
+      int matchingDigits = countSameDigits(myCalc, e2);
+      if(matchingDigits > hightestMatch)
+      {
+        bestIndex = i;
+        hightestMatch = matchingDigits;
+      }
+      // System.out.printf("%d\t\t%f\t\t%f\t%d\n", i, myCalc, e2, matchingDigits);
     }
+    System.out.println("Math.exp(2): " + Math.exp(2));
+    System.out.printf("Best Approximation of e^2 was myExp(2, %d): %f\n", bestIndex, myExp(2, bestIndex) );
+
   }
 
   //Exercise 3
@@ -62,24 +70,26 @@ public class Loops
     return sum;
   }
 
-  //Stack Overflow Version
-  public static double myExp2(double myX, double myPower){
+  public static int countSameDigits(double a, double b)
+  {
+    String strA = String.valueOf(a);
+    String strB = String.valueOf(b);
 
-        double firstResult = myX;
-        double denom = 1;
-        double sum =myX;
-
-        for(int count =1;count<myPower;count++){
-
-            firstResult = firstResult*myX;//handles the numerator
-
-            denom = denom*(denom+1);//handles the denominator
-
-            firstResult = firstResult/denom;//handles the segment
-
-            sum =sum+firstResult;// adds up the different segments
-        }
-
-        return (sum+1);//gets the final result
+    int count = 0;
+    int charIndex = 0;
+    while(charIndex < strA.length() && charIndex < strB.length())
+    {
+      if(strA.charAt(charIndex)==strB.charAt(charIndex))
+      {
+        count++;
+        charIndex++;
+      }
+      else
+      {
+        break;
+      }
     }
+    return count;
+  }
+
 }
