@@ -1,0 +1,13 @@
+Margie MonteLeon
+Think Java
+4.11 Exercise 1
+
+Item 1: Output
+No, I wug.
+You wugga wug.
+
+Item 2: Stack Diagram
+*There are no variables in any of the 3 methods in this class.  They're all void methods consisting of print statements and method calls to the other void methods.*
+
+Item 3:
+If you invoke baffle(); at the end of the ping method, the program would end up in an infinte loop.  baffle() invokes ping() and ping() invokes baffle().  This would cause the program to get stuck going back and forth between the two methods.
