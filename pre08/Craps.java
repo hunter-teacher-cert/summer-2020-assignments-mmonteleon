@@ -25,7 +25,8 @@ public class Craps
   public static int roll(int n)
   {
     int dice = (int)(Math.random()*n)+1;
-    System.out.println("Dice Roll: " + dice);
+    // System.out.println("Dice Roll: " + dice);
+    printDice(dice);
     return dice;
   }
 
@@ -98,6 +99,58 @@ public class Craps
    System.out.println("╚██████╗██║  ██║██║  ██║██║     ███████║");
    System.out.println(" ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝");
 
+  }
+
+  public static void printDice(int n)
+  {
+    if(n==1)
+    {
+      System.out.println(" ---");
+      System.out.println("|   |");
+      System.out.println("| o |");
+      System.out.println("|   |");
+      System.out.println(" ---");
+    }
+    if(n==2)
+    {
+      System.out.println(" ---");
+      System.out.println("|o  |");
+      System.out.println("|   |");
+      System.out.println("|  o|");
+      System.out.println(" ---");
+    }
+    if(n==3)
+    {
+      System.out.println(" ---");
+      System.out.println("|o  |");
+      System.out.println("| o |");
+      System.out.println("|  o|");
+      System.out.println(" ---");
+    }
+    if(n==4)
+    {
+      System.out.println(" ---");
+      System.out.println("|o o|");
+      System.out.println("|   |");
+      System.out.println("|o o|");
+      System.out.println(" ---");
+    }
+    if(n==5)
+    {
+      System.out.println(" ---");
+      System.out.println("|o o|");
+      System.out.println("| o |");
+      System.out.println("|o o|");
+      System.out.println(" ---");
+    }
+    if(n==6)
+    {
+      System.out.println(" ---");
+      System.out.println("|o o|");
+      System.out.println("|o o|");
+      System.out.println("|o o|");
+      System.out.println(" ---");
+    }
   }
 
 }
