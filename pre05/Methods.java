@@ -32,10 +32,7 @@ public class Methods
   // Exercise 3
   public static boolean isTriangle(int a, int b, int c)
   {
-    if(a+b > c || a+c > b || b+c > a)
-      return false;
-    else
-      return true;
+    return a+b > c && b+c > a && a+c > b;
   }
 
   // Exercise 8
