@@ -5,9 +5,53 @@ Think Java
 Item 1: Output
 No, I wug.
 You wugga wug.
+I wug.
 
 Item 2: Stack Diagram
-*There are no variables in any of the 3 methods in this class.  They're all void methods consisting of print statements and method calls to the other void methods.*
+Execution order:
+1: main: output--> No, I
+2: main: call zoop() method
+3:  zoop: call baffle() method
+4:    baffle: output --> wug
+5:    baffle: call ping() method
+6:      ping: output --> . (and then moves to new line)
+7:  zoop: output --> You wugga
+8:  zoop: call baffle() method
+9:    baffle: output --> wug
+10:   baffle: call ping() method
+11:     ping: output --> . (and then moves to new line)
+12: main: output --> I
+13: main: call baffle() method
+14:   baffle: output --> wug
+15:   baffle: call ping() method
+16:     ping: output --> . (and then moves to new line)
+
+
 
 Item 3:
 If you invoke baffle(); at the end of the ping method, the program would end up in an infinte loop.  baffle() invokes ping() and ping() invokes baffle().  This would cause the program to get stuck going back and forth between the two methods.
+
+
+**********************
+Reference Code:
+public static void zoop() {
+    baffle();
+    System.out.print("You wugga ");
+    baffle();
+}
+
+public static void main(String[] args) {
+    System.out.print("No, I ");
+    zoop();
+    System.out.print("I ");
+    baffle();
+}
+
+public static void baffle() {
+    System.out.print("wug");
+    ping();
+}
+
+public static void ping() {
+    System.out.println(".");
+}
