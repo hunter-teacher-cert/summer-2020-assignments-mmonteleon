@@ -52,7 +52,7 @@ public class Arrays
     System.out.println("Primes from 2-30:");
     printArr2(sieve(30));
     System.out.println("Primes from 2-100:");
-    printArr2(sieve(30));
+    printArr2(sieve(100));
 
 
     System.out.println("\nExercise 8: Recursive Max In Range");
@@ -167,7 +167,7 @@ public class Arrays
         isPrime[i] = true;
 
       //Set all multiples of the prime numbers to false
-      for(int i = 2; i <=n; i++)
+      for(int i = 2; Math.pow(i,2) <=n; i++)
         if(isPrime[i])
           for(int j = i+i; j <=n; j+=i )
             isPrime[j] = false;
