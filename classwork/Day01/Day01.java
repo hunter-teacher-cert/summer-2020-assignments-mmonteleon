@@ -3,7 +3,7 @@ public class Day01
 {
   public static void main(String[] args)
   {
-    int[][] arr = new int[10][10];
+    int[][] arr = new int[20][20];
 
     System.out.println("rowPop(arr,0, 69)");
     rowPop(arr, 0, 69);  //Yes, I'm a child.
