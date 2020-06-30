@@ -48,7 +48,7 @@ public class Craps
 
     The shooter shoots (rolls) the dice.
 
-    If they rolls a 2,3, or 12,that’s Craps and they lose.
+    If they roll a 2,3, or 12,that’s Craps and they lose.
     If they roll a 7 or 11, that’s a Natural and they win.
     Otherwise:
 
