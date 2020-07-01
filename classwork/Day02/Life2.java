@@ -69,11 +69,10 @@ class Life2
     {
       for(int col = colStart; col >=0 && col < board.length && col <= c+1 ; col++)
       {
-          if(board[row][col] == 'X')
+          if(board[row][col] == 'X' && !(col==c && row==r))
             count++;
       }
     }
-    count -= board[r][c] == 'X' ? 1 : 0;
     return count;
   }//End countNeighbours
 
