@@ -68,11 +68,11 @@ class Life
     {
       for(int col = colStart; col >=0 && col < board.length && col <= c+1 ; col++)
       {
-          if(board[row][col] == 'X')
+          if(board[row][col] == 'X' && !(col==c && row==r))
             count++;
       }
     }
-    count -= board[r][c] == 'X' ? 1 : 0;
+    // count -= board[r][c] == 'X' ? 1 : 0;
     return count;
   }//End countNeighbours
 
@@ -80,7 +80,6 @@ class Life
       given a board and a cell, determine, based on the rules for
       Conway's GOL if the cell is alive ('X') or dead (' ') in the
       next generation.
-
      */
     public static char getNextGenCell(char[][] board,int r, int c)
     {
