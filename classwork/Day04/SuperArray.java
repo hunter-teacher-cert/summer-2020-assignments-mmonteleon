@@ -31,29 +31,17 @@ public class SuperArray
     {
         if(index >= 0 && index < numElements)
         {
-
-
           int removed = arr[index];
-          //Create a new temporary array that has one less element
-          int[] arr2 = new int[numElements-1];
-
-          //Copy all the elements below the index into the new array
-          for(int i=0; i<index; i++)
-          {
-              arr2[i]=arr[i];
-          }
 
           //Skip the element at index in the old array
           //add in the remaining elements
           for(int i= index; i<numElements-1; i++)
           {
-              arr2[i]=arr[i+1];
+              arr[i]=arr[i+1];
           }
 
-          //Have the arr point to the new array
-          arr=arr2;
+          //Adjust the numElements
           numElements--;
-          currentSize=numElements;
 
           return removed;
         }
@@ -66,32 +54,28 @@ public class SuperArray
     // after this index.
     public void add(int index, int element)
     {
-        if(index <= arr.length)
+        if(index == arr.length)
         {
+          this.add(element);
+        }
+        else if(index < arr.length)
+        {
+          //Check to see if there is enough space to fit the new element.  Grow if necessary.
+          if(numElements+1 > currentSize)
+            grow();
 
-          //Create a new temporary array
-          int[] arr2 = new int[numElements+1];
-
-          //Copy all the elements below the index into the new array
-          for(int i=0; i<index; i++)
+          //move all the original elements from index on, one space to the right
+          for(int i = numElements+1; i>index; i--)
           {
-              arr2[i]=arr[i];
+              arr[i]=arr[i-1];
           }
 
           //add the element at the given index
-          arr2[index]=element;
+          arr[index]=element;
 
-          //add in the remaining elements
-          for(int i= index; i<numElements; i++)
-          {
-              arr2[i+1]=arr[i];
-          }
-
-          //Have the arr point to the new array
-          arr=arr2;
 
           numElements++;
-          currentSize = numElements;
+
         }
     }
 
