@@ -29,29 +29,36 @@ public class SuperArray
     // all subsequent elements to the left.
     public int remove(int index)
     {
-        int removed = arr[index];
-        //Create a new temporary array that has one less element
-        int[] arr2 = new int[numElements-1];
-
-        //Copy all the elements below the index into the new array
-        for(int i=0; i<index; i++)
+        if(index >= 0 && index < numElements)
         {
-            arr2[i]=arr[i];
+
+
+          int removed = arr[index];
+          //Create a new temporary array that has one less element
+          int[] arr2 = new int[numElements-1];
+
+          //Copy all the elements below the index into the new array
+          for(int i=0; i<index; i++)
+          {
+              arr2[i]=arr[i];
+          }
+
+          //Skip the element at index in the old array
+          //add in the remaining elements
+          for(int i= index; i<numElements-1; i++)
+          {
+              arr2[i]=arr[i+1];
+          }
+
+          //Have the arr point to the new array
+          arr=arr2;
+          numElements--;
+          currentSize=numElements;
+
+          return removed;
         }
-
-        //Skip the element at index in the old array
-        //add in the remaining elements
-        for(int i= index; i<numElements-1; i++)
-        {
-            arr2[i]=arr[i+1];
-        }
-
-        //Have the arr point to the new array
-        arr=arr2;
-        numElements--;
-        currentSize=numElements;
-
-        return removed;
+        else
+          return -1;
     }
 
     // Add the int `element` at the `index` in the array.
@@ -59,29 +66,33 @@ public class SuperArray
     // after this index.
     public void add(int index, int element)
     {
-        //Create a new temporary array
-        int[] arr2 = new int[numElements+1];
-
-        //Copy all the elements below the index into the new array
-        for(int i=0; i<index; i++)
+        if(index <= arr.length)
         {
-            arr2[i]=arr[i];
+
+          //Create a new temporary array
+          int[] arr2 = new int[numElements+1];
+
+          //Copy all the elements below the index into the new array
+          for(int i=0; i<index; i++)
+          {
+              arr2[i]=arr[i];
+          }
+
+          //add the element at the given index
+          arr2[index]=element;
+
+          //add in the remaining elements
+          for(int i= index; i<numElements; i++)
+          {
+              arr2[i+1]=arr[i];
+          }
+
+          //Have the arr point to the new array
+          arr=arr2;
+
+          numElements++;
+          currentSize = numElements;
         }
-
-        //add the element at the given index
-        arr2[index]=element;
-
-        //add in the remaining elements
-        for(int i= index; i<numElements; i++)
-        {
-            arr2[i+1]=arr[i];
-        }
-
-        //Have the arr point to the new array
-        arr=arr2;
-
-        numElements++;
-        currentSize = numElements;
     }
 
 
@@ -127,10 +138,12 @@ public class SuperArray
         for (int i=0; i < numElements; i++) {
             str += arr[i] + ", ";
         }
-        if (str.length() > 0 && str.charAt(str.length()-2)==',') {
+        //Remove the extra comma and space
+        if (str.length() > 1)
+        {
             str = str.substring(0, str.length()-2);
-            str += "}";
         }
+        str += "}";
         return str;
     }
 
@@ -139,5 +152,5 @@ public class SuperArray
       return numElements == 0;
     }
 
-    
+
 }
