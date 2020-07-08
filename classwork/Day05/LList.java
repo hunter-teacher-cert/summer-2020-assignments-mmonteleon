@@ -90,11 +90,13 @@ public class LList
     {
       if(pointer != null) //not the end of the list
       {
-        Node noob = new Node(pointer.getData(), pointer.getNext());
-        pointer.setData(value);
-        pointer.setNext(noob);
+        Node noob = new Node(value, pointer);
+        if(previous != null)
+          previous.setNext(noob);
+        else
+          head = noob;
       }
-      else
+      else  //inserting at the end
       {
         Node noob = new Node(value);
         previous.setNext(noob);
