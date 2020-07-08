@@ -4,18 +4,21 @@ import java.util.*;
 public class LList
 {
   private Node head;
+  private int length;
 
   //Default constructor
   //Initializes an empty linked list.
   public LList()
   {
     head = null;
+    length = 0;
   }
 
   //public void addFront(String value)
   //Add a new Node containing value to the front of the list.
   public void addFront(String data)
   {
+    //Create the new Node
     Node noob = new Node(data);
 
     // first point the new node to the beginning
@@ -23,6 +26,9 @@ public class LList
 
     // point head to the new node
     head = noob;
+
+    // increment the length instance variable
+    length++;
   }//END add
 
   //Returns true if the list is empty, false otherwise.
@@ -36,21 +42,22 @@ public class LList
   // If index is out of bounds, return null.
   public String get(int index)
   {
-    String str = "null";  //Default string
     int num = 0;    //initial node
     Node pointer = head;
 
-    //loop until reached index OR until the list ends
+    //Loop until end of the list OR reached index
     while(pointer != null && num != index)
     {
       num++;
       pointer = pointer.getNext();
     }
 
-    if(pointer != null)  //You can only call getData on a Node object
-      str = pointer.getData();
+    // If index found, return the data at that Node
+    if(pointer != null)
+      return pointer.getData();
 
-    return str;
+    // If index NOT found, return null
+    return null;
   }
 
   // Set the Node at index to contain value
@@ -60,14 +67,15 @@ public class LList
     int num = 0;    //initial node
     Node pointer = head;
 
-    //loop until reached index OR until the list ends
+    // loop until end of the list OR reached index
     while(pointer != null && num != index)
     {
       num++;
       pointer = pointer.getNext();
     }
 
-    if(pointer != null)  //You can only call setData on a Node object
+    // If the Node exists, change the Data
+    if(pointer != null)
       pointer.setData(value);
   }
 
@@ -78,7 +86,7 @@ public class LList
     int num = 0;    //initial node
     Node previous = null, pointer = head;
 
-    //loop until reached index OR until the list ends
+    // loop until end of the list OR reached index
     while(pointer != null && num != index)
     {
       previous = pointer;
@@ -86,7 +94,9 @@ public class LList
       pointer = pointer.getNext();
     }
 
-    if(num == index)  // index is valid
+    // Check if index is valid
+    // *adding to the end of the list is valid in MY version of insert
+    if(num == index)
     {
       if(pointer != null) //not the end of the list
       {
@@ -101,7 +111,8 @@ public class LList
         Node noob = new Node(value);
         previous.setNext(noob);
       }
-    }
+      length++; //increment length of the list
+    }//end index is valid
   }
 
   //Returns a String representation of the list.
@@ -114,10 +125,6 @@ public class LList
     while (tmp != null)
     {
       s = s + tmp.getData()+"-->";
-      // how can we now move tmp to the next node
-      // this is the magic linked list idiom!!!!
-      // this moves a pointer to the next node!!!
-      // It's analagous to i=i+1 for an array (for loop)
       tmp = tmp.getNext();
     }
 
@@ -165,23 +172,26 @@ public class LList
       else
         previous.setNext(pointer.getNext());
 
+      length--;
     }
   }
 
   public int length()
   {
-    int l = 0;
-
-    Node tmp;
-    tmp = head;
-    while (tmp != null)
-    {
-
-      l = l + 1;
-      tmp = tmp.getNext();
-    }
-
-    return l;
+    return length;
+    //Mike's Version
+    // int l = 0;
+    //
+    // Node tmp;
+    // tmp = head;
+    // while (tmp != null)
+    // {
+    //
+    //   l = l + 1;
+    //   tmp = tmp.getNext();
+    // }
+    //
+    // return l;
   }
 
 }//End Class
