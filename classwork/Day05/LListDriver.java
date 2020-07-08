@@ -9,6 +9,7 @@ public class LListDriver {
     System.out.println("Test Empty list print & isEmpty:");
     System.out.println(g);
     System.out.println(g.isEmpty());
+    System.out.println("Length: " + g.length());
 
 
     System.out.println("\nTest addFront 3x & isEmpty():");
@@ -16,6 +17,7 @@ public class LListDriver {
     g.addFront("news");
     g.addFront("everyone!");
     System.out.println(g);
+    System.out.println("Length: " + g.length());
     System.out.println(g.isEmpty());
 
    System.out.println("\nTest get 0, 1, 5:");
@@ -33,23 +35,29 @@ public class LListDriver {
    System.out.println("\nTest insert 0, 2, 5, 10:");
    g.insert(0, "woo!");
    System.out.println(g);
+   System.out.println("Length: " + g.length());
    g.insert(2, "go");
    System.out.println(g);
+   System.out.println("Length: " + g.length());
    g.insert(5, "cool");
    System.out.println(g);
+   System.out.println("Length: " + g.length());
    g.insert(10, "too far");
    System.out.println(g);
+   System.out.println("Length: " + g.length());
 
    System.out.println("\nTest search \"woo!\", \"cool\", \"too far\"");
    System.out.println(g.search("woo!"));
    System.out.println(g.search("cool"));
    System.out.println(g.search("too far"));
-   
+
    System.out.println("\nTest remove 0, 2:");
    g.remove(0);
    System.out.println(g);
+   System.out.println("Length: " + g.length());
    g.remove(2);
    System.out.println(g);
+   System.out.println("Length: " + g.length());
 
   }//main
 }//LListDriver

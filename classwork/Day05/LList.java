@@ -104,7 +104,6 @@ public class LList
     }
   }
 
-
   //Returns a String representation of the list.
   public String toString()
   {
@@ -169,5 +168,20 @@ public class LList
     }
   }
 
+  public int length()
+  {
+    int l = 0;
+
+    Node tmp;
+    tmp = head;
+    while (tmp != null)
+    {
+
+      l = l + 1;
+      tmp = tmp.getNext();
+    }
+
+    return l;
+  }
 
 }//End Class
