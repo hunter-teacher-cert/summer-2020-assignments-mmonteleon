@@ -52,7 +52,7 @@ public class LList
       pointer = pointer.getNext();
     }
 
-    // If index found, return the data at that Node
+    // If a Node exists at the index, return the data from that Node
     if(pointer != null)
       return pointer.getData();
 
@@ -83,9 +83,10 @@ public class LList
   // If index is invalid, do nothing.
   public void insert(int index, String value)
   {
-    int num = 0;    //initial node
+    int num = 0;    //initial node index
     Node previous = null, pointer = head;
 
+    //Traverse the list until you reach the Node at index (if it exists)
     // loop until end of the list OR reached index
     while(pointer != null && num != index)
     {
@@ -95,18 +96,18 @@ public class LList
     }
 
     // Check if index is valid
-    // *adding to the end of the list is valid in MY version of insert
+    // *adding to the end of the list is valid in this version of insert*
     if(num == index)
     {
       if(pointer != null) //not the end of the list
       {
         Node noob = new Node(value, pointer);
-        if(previous != null)
+        if(previous != null)  //if noob is NOT the 0th Node
           previous.setNext(noob);
-        else
+        else    //if noob is going to the front of the LList
           head = noob;
       }
-      else  //inserting at the end
+      else  //index is after the end of the list -->insert at the end
       {
         Node noob = new Node(value);
         previous.setNext(noob);
@@ -157,7 +158,7 @@ public class LList
     int num = 0;    //initial node
     Node previous = null, pointer = head;
 
-    //loop until reached index OR until the list ends
+    // loop until end of the list OR reached index
     while(pointer != null && num != index)
     {
       previous = pointer;
@@ -165,9 +166,9 @@ public class LList
       pointer = pointer.getNext();
     }
 
-    if(pointer != null)
+    if(pointer != null)  //make sure the Node you want to remove exists
     {
-      if(previous == null)
+      if(previous == null)  //Check to see if we are removing the 0th Node
         head = pointer.getNext();
       else
         previous.setNext(pointer.getNext());
@@ -179,19 +180,6 @@ public class LList
   public int length()
   {
     return length;
-    //Mike's Version
-    // int l = 0;
-    //
-    // Node tmp;
-    // tmp = head;
-    // while (tmp != null)
-    // {
-    //
-    //   l = l + 1;
-    //   tmp = tmp.getNext();
-    // }
-    //
-    // return l;
   }
 
 }//End Class
