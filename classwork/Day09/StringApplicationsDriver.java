@@ -21,6 +21,10 @@ public class StringApplicationsDriver
     String palSentence = input.nextLine();
     System.out.println("Palindrome Sentence? " + StringApplications.isPalindrome2(palSentence));
 
+    System.out.println("Enter a mathematical expression: ");
+    String expression = input.nextLine();
+    System.out.println("Brackets Match? " + StringApplications.parenCheck(expression));
+
     input.close();
 
   }

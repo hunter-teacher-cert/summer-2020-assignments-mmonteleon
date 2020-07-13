@@ -4,13 +4,14 @@ public class StringApplications
   public static String reverse(String s)
   {
     String rev = "";
-    for(int i = s.length() -1; i >= 0; i--)
+    for(int i = s.length()-1; i >= 0; i--)
       rev += s.charAt(i);
     return rev;
   }
 
   public static boolean isPalindrome(String s)
   {
+    System.out.println(s + ":" + reverse(s));
     return s.equals(reverse(s));
   }
 
@@ -54,6 +55,26 @@ public class StringApplications
     words.add(word);
 
     return words;
+  }
+
+  public static boolean parenCheck(String s)
+  {
+    int open = 0, close = 0;
+
+    for(int i = 0; i < s.length(); i++)
+    {
+
+      char ch = s.charAt(i);
+      if(ch == '(')
+        open++;
+      else if(ch == ')')
+        close++;
+
+      if(close > open)
+        return false;
+    }
+
+    return open == close;
   }
 
 }// End main
