@@ -30,17 +30,9 @@ public class StackApplications
 
   public static String reverseWords(String s)
   {
-    //Isolate the individual words and put into the "words" ArrayList
-    ArrayList<String> words = words = stringToWordList(s);
-
-    // Creat a Stack to hold the individual words
-    Stack<String> wordStack = new Stack<String>();
-
-    // Add each word in "words" to the Stack "wordStack".
-    for(String word: words)
-    {
-      wordStack.push(word);
-    }
+    // Create a Stack to hold the individual words
+    Stack<String> wordStack = pushWordsToStack(s);
+    // Bottom of stack holds first word, top holds last.
 
     // Reverse the word order
     String reversed = "";
@@ -53,10 +45,10 @@ public class StackApplications
   } //End reversedWords
 
 
-  private static ArrayList<String> stringToWordList(String s)
+  private static Stack<String> pushWordsToStack(String s)
   {
     //Create a String ArrayList to hold individual words
-    ArrayList<String> words = new ArrayList<String>();
+    Stack<String> words = new Stack<String>();
 
     // Iterate through the String s,
     // If the letter is NOT a space, add letters to the String "word".
@@ -72,11 +64,11 @@ public class StackApplications
       else
       {
         if(word.length() != 0)
-          words.add(word);
+          words.push(word);
         word = "";
       }
     }// end for
-    words.add(word);
+    words.push(word);
 
     return words;
   }
@@ -85,6 +77,5 @@ public class StackApplications
   {
     return s.equals(reverseWords(s));
   }
-
 
 }//End Class
