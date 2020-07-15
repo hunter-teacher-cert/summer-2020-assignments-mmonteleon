@@ -29,7 +29,7 @@ public class Boogle
     if(min <= max)
     {
       int middle = (min + max) / 2;
-      else if((int)(al.get(middle)) == target)
+      if((int)(al.get(middle)) == target)
         return middle;
       else if((int)(al.get(middle)) > target)
         return binSearch(al, target, min, middle-1);
