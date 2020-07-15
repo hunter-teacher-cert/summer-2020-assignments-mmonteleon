@@ -24,6 +24,7 @@ public class SelectionSort
 
   /*
   * Purpose: Returns the index of the smallest value in an Integer array in the given range.
+  * TOFR suggestion: use [,] or (,) etc range notation to clarify in comment whether bounds are included
   */
   public static int findSmallest(ArrayList<Integer> al, int lo, int hi)
   {
