@@ -25,13 +25,71 @@ public class StackApplications
 
   public static boolean isPalindrome(String s)
   {
-    return s.equals(reverse(s));
+    Stack<String> stacky = new Stack<String>();
+    int middle = (s.length()-1)/2;
+
+    for(int i = 0; i <= middle; i++)
+    {
+        String ch = s.substring(i,i+1);  //isolate the character at index i
+        stacky.push(ch);
+    }
+
+    if(s.length() % 2 == 1) //odd lengths have a shared middle character
+      stacky.pop();
+
+    for(int i = middle + 1; i < s.length(); i++)
+    {
+      String ch = s.substring(i,i+1);
+      if(!(stacky.pop().equals(ch)))  // if letters don't match
+        return false;
+    }
+
+    return stacky.isEmpty();
   }
 
-  public static String reverseWords(String s)
+  /*
+  * This palindrome checker is for SENTENCES
+  * Checks if the words are palindrome ex: "I palindrome I"
+  * FYI: "I palindrome I" is a They Might Be Giants Song
+  */
+  public static boolean isPalindrome2(String s)
+  {
+    Stack<String> stacky = new Stack<String>();
+    String[] words = s.split(" ");
+    int middle = (words.length-1)/2;
+
+    for(int i = 0; i <= middle; i++)
+    {
+        String word = words[i];  //isolate the word at index i
+        stacky.push(word);
+    }
+
+    if(words.length % 2 == 1) //odd lengths have a shared middle word
+      stacky.pop();
+
+    for(int i = middle + 1; i < words.length; i++)
+    {
+      String word = words[i];
+      if(!(stacky.pop().equals(word)))  // if words don't match
+        return false;
+    }
+
+    return stacky.isEmpty();
+  }
+
+  /*
+  * This version of reverse reverse WORD order and NOT CHARACTERS
+  * returns a String with the reversed words
+  */
+  public static String huh(String s)
   {
     // Create a Stack to hold the individual words
-    Stack<String> wordStack = pushWordsToStack(s);
+    Stack<String> wordStack = new Stack<String>();
+    //Split the string into words
+    String[] wordsArr = s.split(" ");
+
+    for(String word: wordsArr)
+      wordStack.push(word);
     // Bottom of stack holds first word, top holds last.
 
     // Reverse the word order
@@ -45,58 +103,25 @@ public class StackApplications
   } //End reversedWords
 
 
-  private static Stack<String> pushWordsToStack(String s)
-  {
-    //Create a String ArrayList to hold individual words
-    Stack<String> words = new Stack<String>();
 
-    // Iterate through the String s,
-    // If the letter is NOT a space, add letters to the String "word".
-    // else add "word" to the list & reset "word" to an empty string.
-    String word = "";
-    for(int i = 0; i < s.length(); i++)
-    {
-      char ch = s.charAt(i);
-      if(ch != ' ')
-      {
-        word += ch;
-      }
-      else
-      {
-        if(word.length() != 0)
-          words.push(word);
-        word = "";
-      }
-    }// end for
-    words.push(word);
-
-    return words;
-  }
-
-  public static boolean isPalindromeSentence(String s)
-  {
-    return s.equals(reverseWords(s));
-  }
-
-  //Didn't use teh stack on this one....
   public static boolean parenCheck(String s)
   {
-    int open = 0, close = 0;
+    Stack<String> stacky = new Stack<String>();
 
     for(int i = 0; i < s.length(); i++)
     {
-
       char ch = s.charAt(i);
       if(ch == '(')
-        open++;
+        stacky.push("(");
       else if(ch == ')')
-        close++;
-
-      if(close > open)
-        return false;
+      {
+        if(!stacky.isEmpty())
+          stacky.pop();
+        else
+          return false;
+      }
     }
-
-    return open == close;
+    return stacky.isEmpty();
   }
 
 

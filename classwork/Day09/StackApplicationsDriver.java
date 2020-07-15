@@ -15,11 +15,15 @@ public class StackApplicationsDriver
 
     System.out.println("Enter a sentence and I will reverse it: ");
     String sentence = input.nextLine();
-    System.out.println("Reversed Sentence: " + StackApplications.reverseWords(sentence));
+    System.out.println("Reversed Sentence: " + StackApplications.huh(sentence));
 
     System.out.println("Enter a sentence and I check to see if it is a palindrome: ");
     String palSentence = input.nextLine();
-    System.out.println("Palindrome Sentence? " + StackApplications.isPalindromeSentence(palSentence));
+    System.out.println("Palindrome Sentence? " + StackApplications.isPalindrome2(palSentence));
+
+    System.out.println("Enter a mathematical expression and I will check if the parenthesis match: ");
+    String math1 = input.nextLine();
+    System.out.println("Matching Parenthesis? " + StackApplications.parenCheck(math1));
 
     input.close();
 
