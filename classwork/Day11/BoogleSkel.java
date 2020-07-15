@@ -8,7 +8,7 @@ public class BoogleSkel
       throw new IllegalArgumentException();
 
     int smallestIndex = lo;
-    int smallestElem = al.get(0);
+    int smallestElem = al.get(lo);
 
     for(int i = lo + 1; i <= hi; i++)
     {
@@ -32,7 +32,6 @@ public class BoogleSkel
     return -1;
   }//end linSearch()
 
-  /******** Margie Wuz Here ************/
   public static int binSearch(ArrayList al, int target)
   {
       return binSearch(al, target, 0, al.size()-1);
