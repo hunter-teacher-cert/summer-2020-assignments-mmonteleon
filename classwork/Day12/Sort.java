@@ -1,7 +1,7 @@
 import java.util.*;
 public class Sort
 {
-  
+
   public static void insertionSort(ArrayList<Integer> arr)
   {
     //if arr contains less than 2 elements, it's already sorted
@@ -100,6 +100,61 @@ public class Sort
       arr.add(rando);
     }
     return arr;
+  }
+
+  public static ArrayList<Integer> slice(ArrayList<Integer> al, int lo, int hi)
+  {
+    ArrayList<Integer> sub = new ArrayList<Integer>();
+    for (; lo < hi; lo++) {
+      sub.add( al.get(lo) );
+    }//copy
+    return sub;
+  }//slice
+
+  public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b)
+  {
+    //setup variables
+    ArrayList<Integer> merged = new ArrayList<Integer>();
+    int aIndex = 0, bIndex = 0;
+    int aElem = a.get(0), bElem = b.get(0);
+
+   //while both indices are less than their respective lengths
+   while(aIndex < a.size() && bIndex < a.size())
+   {
+     //compare current index elements of each input list
+     aElem = a.get(aIndex);
+     bElem = b.get(bIndex);
+     //add the smaller value to the new list
+     //update index we took the value from
+     if(aElem <= bElem)
+     {
+       merged.add(aElem);
+       aIndex++;
+     }
+     else
+     {
+       merged.add(bElem);
+       bIndex++;
+     }
+   }//while
+
+   //loop ends: one index is past the end of the list
+   //copy the values from the reamining list over
+   while(aIndex < a.size())
+   {
+     merged.add(aElem);
+     aIndex++;
+   }
+
+   while(bIndex < b.size())
+   {
+     merged.add(bElem);
+     bIndex++;
+   }
+
+   //return the new list
+   return merged;
+
   }
 
 
