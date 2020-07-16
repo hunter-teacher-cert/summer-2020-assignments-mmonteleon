@@ -4,6 +4,9 @@ public class SelectionSort
 
   public static void selectionSort(ArrayList<Integer> arr)
   {
+    if(arr == null)
+      return;
+
     for(int i = 0; i < arr.size()-1; i++)
     {
       int smallestIndex = findSmallest(arr, i, arr.size()-1);
@@ -16,6 +19,9 @@ public class SelectionSort
   */
   public static void swap(ArrayList<Integer> arr, int index1, int index2)
   {
+    if(arr == null || index1 < 0 || index1 >= arr.size() || index2 < 0 || index2 >= arr.size())
+      throw new IllegalArgumentException();
+
     int temp = arr.get(index1);
     arr.set(index1, arr.get(index2));
     arr.set(index2, temp);
