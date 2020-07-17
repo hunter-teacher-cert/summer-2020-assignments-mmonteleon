@@ -1,6 +1,24 @@
 import java.util.*;
 public class Sort
 {
+  public static ArrayList<Integer> mergeSort(ArrayList<Integer> arr)
+  {
+    //Base Case --> List is already unsorted
+    if(arr.size() < 2)
+      return arr;
+
+    //Break the ArrayList into 2 halves
+    int mid = arr.size()/2;
+    ArrayList<Integer> arr1 = slice(arr, 0, mid);
+    ArrayList<Integer> arr2 = slice(arr, mid, arr.size());
+
+    //Merge Sort each half
+    arr1 = mergeSort(arr1);
+    arr2 = mergeSort(arr2);
+
+    //Merge the two sorted ArrayLists into a single List
+    return merge(arr1, arr2);
+  }
 
   public static void insertionSort(ArrayList<Integer> arr)
   {
@@ -96,7 +114,7 @@ public class Sort
     ArrayList<Integer> arr = new ArrayList<Integer>();
     for(int i = 0; i < num; i++)
     {
-      int rando = (int)(num * Math.random());
+      int rando = (int)(100 * Math.random());
       arr.add(rando);
     }
     return arr;
@@ -119,7 +137,7 @@ public class Sort
     int aElem = a.get(0), bElem = b.get(0);
 
    //while both indices are less than their respective lengths
-   while(aIndex < a.size() && bIndex < a.size())
+   while(aIndex < a.size() && bIndex < b.size())
    {
      //compare current index elements of each input list
      aElem = a.get(aIndex);
@@ -142,12 +160,14 @@ public class Sort
    //copy the values from the reamining list over
    while(aIndex < a.size())
    {
+     aElem = a.get(aIndex);
      merged.add(aElem);
      aIndex++;
    }
 
    while(bIndex < b.size())
    {
+     bElem = b.get(bIndex);
      merged.add(bElem);
      bIndex++;
    }
