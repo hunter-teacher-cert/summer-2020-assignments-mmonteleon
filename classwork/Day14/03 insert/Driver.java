@@ -15,6 +15,8 @@ public class Driver {
 
 		t.insert(3);
 
+		t.insert(17);
+
 
 		System.out.println("Get values from right-most branch: ");
     TreeNode cur = t.getRoot();
@@ -23,5 +25,12 @@ public class Driver {
       System.out.println(cur.getData());
       cur = cur.getRight();
     }
+
+		System.out.println("Root-Right-Left-Right");
+		System.out.println(t.getRoot().getData());
+		System.out.println(t.getRoot().getRight().getData());
+		System.out.println(t.getRoot().getRight().getLeft().getData());
+		System.out.println(t.getRoot().getRight().getLeft().getRight().getData());
+
 	}
 }
