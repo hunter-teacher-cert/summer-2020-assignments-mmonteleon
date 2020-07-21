@@ -61,8 +61,9 @@ public class BSTree
       {
         // insert on left
         trailer.setLeft(newNode);
-    }
+      }
 
+    }//end if
   }//end insert
 
 
@@ -115,5 +116,92 @@ public class BSTree
   {
     return root;
   }
+
+  /* OVERLOADED METHOD
+  ** preorderTraverse with no parameters calls preorderTraverse(root)
+  ** Prints all the elements in the tree
+  ** Element, Left, Right
+  */
+  public void preorderTraverse()
+  {
+    preorderTraverse(root);
+    System.out.println("");
+  }
+  /* OVERLOADED METHOD
+  ** preorderTraverse(root)prints all the elements in the subtree begining
+  ** at "current" TreeNode
+  */
+  public void preorderTraverse(TreeNode current)
+  {
+    //If the node is null, return
+    if(current == null)
+      return;
+
+    //Print the data first
+    System.out.print(current.getData() + " ");
+
+    //Traverse Left Subtree
+    preorderTraverse(current.getLeft());
+
+    //Traverse right Subtree
+    preorderTraverse(current.getRight());
+  }//end preorderTraverse
+
+  /* OVERLOADED METHOD
+  ** postorderTraverse with no parameters calls postorderTraverse(root)
+  ** Prints all the elements in the tree.
+  ** Left, Right, Element
+  */
+  public void postorderTraverse()
+  {
+    postorderTraverse(root);
+    System.out.println("");
+  }
+
+  public void postorderTraverse(TreeNode current)
+  {
+    //If the node is null, return
+    if(current == null)
+      return;
+
+    //Traverse Left Subtree
+    postorderTraverse(current.getLeft());
+
+    //Traverse right Subtree
+    postorderTraverse(current.getRight());
+
+    //Print the data last
+    System.out.print(current.getData() + " ");
+  }//end preorderTraverse
+
+  /* OVERLOADED METHOD
+  ** postorderTraverse with no parameters calls postorderTraverse(root)
+  ** Prints all the elements in the tree.
+  ** Left, Element, right
+  ** Prints sorted list.
+  */
+  public void inorderTraverse()
+  {
+    inorderTraverse(root);
+    System.out.println("");
+  }
+
+  public void inorderTraverse(TreeNode current)
+  {
+    //If the node is null, return
+    if(current == null)
+      return;
+
+    //Traverse Left Subtree
+    inorderTraverse(current.getLeft());
+
+    //Print the data
+    System.out.print(current.getData() + " ");
+
+    //Traverse right Subtree
+    inorderTraverse(current.getRight());
+
+
+  }//end preorderTraverse
 
 }//end class
